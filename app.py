@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, escape
 
 app = Flask(__name__)
 
@@ -13,3 +13,7 @@ def about():
 @app.route('/stocks/')
 def stocks():
     return '<h2>Stock List ...</h2>'
+
+@app.route('/hello/<message>')
+def hello_message(message):
+    return f'<h1>Welcome {escape(message)}!</h1>'
