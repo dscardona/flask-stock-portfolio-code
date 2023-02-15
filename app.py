@@ -17,3 +17,7 @@ def stocks():
 @app.route('/hello/<message>')
 def hello_message(message):
     return f'<h1>Welcome {escape(message)}!</h1>'
+
+@app.route('/blog_posts/<post_id>')
+def display_blog_post (post_id):
+    return f'<h1>Blog Post #{post_id}...</h1'
