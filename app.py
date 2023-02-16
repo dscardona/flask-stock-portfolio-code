@@ -1,11 +1,11 @@
-from flask import Flask, escape
+from flask import Flask, escape, render_template
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return "Hello World"
+    return render_template('index.html') 
 
 
 @app.route("/about")
