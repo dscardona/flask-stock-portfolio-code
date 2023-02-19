@@ -1,4 +1,4 @@
-from flask import Flask, escape, render_template
+from flask import Flask, escape, render_template, request
 
 app = Flask(__name__)
 
@@ -31,4 +31,8 @@ def display_blog_post(post_id):
 
 @app.route("/add_stock", methods=["GET", "POST"])
 def add_stock():
+    if request.method == "POST":
+        for key, value in request.form.items():
+            print(f"{key}: {value}")
+
     return render_template("add_stock.html")
