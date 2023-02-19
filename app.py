@@ -5,13 +5,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('index.html') 
+    return render_template("index.html")
 
 
 @app.route("/about")
 def about():
-    return render_template('about.html', company_name='TestDriven.io')
+    return render_template("about.html", company_name="TestDriven.io")
     # return render_template('about.html')
+
 
 @app.route("/stocks/")
 def stocks():
@@ -26,3 +27,7 @@ def hello_message(message):
 @app.route("/blog_posts/<int:post_id>")
 def display_blog_post(post_id):
     return f"<h1>Blog Post #{post_id}...</h1"
+
+    @app.route("/add_stock")
+    def add_stock():
+        return render_template("add_stock.html")
