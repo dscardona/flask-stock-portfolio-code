@@ -49,6 +49,7 @@ def display_blog_post(post_id):
 @app.route("/add_stock", methods=["GET", "POST"])
 def add_stock():
     if request.method == "POST":
+        # Print the form data to the console
         for key, value in request.form.items():
             print(f"{key}: {value}")
 
@@ -60,6 +61,11 @@ def add_stock():
             )
 
             print(stock_data)
+
+            # Save the form data to the session object
+            session['stock_symbol'] = stock_data.stock_symbol
+            session['number_of_shares'] = stock_data.number_of_shares
+            session['purchase_price'] = stock_data.purchase_price
         except ValidationError as e:
             print(e)
 
