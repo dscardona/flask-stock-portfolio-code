@@ -2,6 +2,8 @@ from flask.logging import default_handler
 import logging
 from flask import Flask, escape, render_template, request, session, redirect, url_for, flash
 from pydantic import BaseModel, validator, ValidationError
+from logging.handlers import RotatingFileHandler
+
 
 class StockModel(BaseModel):
     """Class for parsing new stock data from a form."""
@@ -23,10 +25,12 @@ app = Flask(__name__)
 app.logger.removeHandler(default_handler)
 
 # Logging Configuration
-file_handler = logging.FileHandler('flask-stock-portfolio.log')
+file_handler = RotatingFileHandler('flask-stock-portfolio.log',
+                                   maxBytes=16384,
+                                   backupCount=20)
 file_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(filename)s:%(lineno)d]')
 file_handler.setFormatter(file_formatter)
-file_handler.setLevel(logging.INFO) 
+file_handler.setLevel(logging.INFO)
 app.logger.addHandler(file_handler)
 
 # Log that the Flask application is starting
