@@ -22,6 +22,7 @@ app = Flask(__name__)
 file_handler = logging.FileHandler('flask-stock-portfolio.log')
 file_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(filename)s:%(lineno)d]')
 file_handler.setFormatter(file_formatter)
+file_handler.setLevel(logging.INFO) 
 app.logger.addHandler(file_handler)
 
 # Log that the Flask application is starting
