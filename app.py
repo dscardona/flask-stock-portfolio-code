@@ -1,6 +1,5 @@
-from flask import Flask, escape, render_template, request
+from flask import Flask, escape, render_template, request, session, redirect, url_for
 from pydantic import BaseModel, validator, ValidationError
-from flask import session
 
 class StockModel(BaseModel):
     """Class for parsing new stock data from a form."""
