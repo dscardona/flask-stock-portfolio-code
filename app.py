@@ -1,3 +1,4 @@
+from flask.logging import default_handler
 import logging
 from flask import Flask, escape, render_template, request, session, redirect, url_for, flash
 from pydantic import BaseModel, validator, ValidationError
@@ -17,6 +18,9 @@ class StockModel(BaseModel):
 
 
 app = Flask(__name__)
+
+# Remove the default logger configured by Flask
+app.logger.removeHandler(default_handler)
 
 # Logging Configuration
 file_handler = logging.FileHandler('flask-stock-portfolio.log')
