@@ -21,6 +21,7 @@ app.secret_key = "b'7Hq\xcbB\x9d\x1d\x0b\x16\xa8\xc2y\x93\xca`\xaf#\xba\xc9d\x9f
 
 @app.route("/")
 def index():
+    app.logger.info('Calling the index() function.')
     return render_template("index.html")
 
 
