@@ -1,4 +1,4 @@
-from flask import Flask, escape, render_template, request, session, redirect, url_for
+from flask import Flask, escape, render_template, request, session, redirect, url_for, flash
 from pydantic import BaseModel, validator, ValidationError
 
 class StockModel(BaseModel):
@@ -65,6 +65,7 @@ def add_stock():
             session['stock_symbol'] = stock_data.stock_symbol
             session['number_of_shares'] = stock_data.number_of_shares
             session['purchase_price'] = stock_data.purchase_price
+            flash(f"Added new stock ({stock_data.stock_symbol})!")
             return redirect(url_for('list_stocks'))
 
         except ValidationError as e:
