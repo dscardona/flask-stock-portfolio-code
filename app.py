@@ -1,6 +1,6 @@
 from flask import Flask, escape, render_template, request
 from pydantic import BaseModel, validator, ValidationError
-
+from flask import session
 
 class StockModel(BaseModel):
     """Class for parsing new stock data from a form."""
@@ -17,6 +17,7 @@ class StockModel(BaseModel):
 
 
 app = Flask(__name__)
+app.secret_key = "b'7Hq\xcbB\x9d\x1d\x0b\x16\xa8\xc2y\x93\xca`\xaf#\xba\xc9d\x9f)\x91po\xa9i\x87t-\xc1\xe9'"
 
 
 @app.route("/")
