@@ -1,3 +1,4 @@
+import logging
 from flask import Flask, escape, render_template, request, session, redirect, url_for, flash
 from pydantic import BaseModel, validator, ValidationError
 
@@ -16,6 +17,14 @@ class StockModel(BaseModel):
 
 
 app = Flask(__name__)
+
+# Logging Configuration
+file_handler = logging.FileHandler('flask-stock-portfolio.log')
+app.logger.addHandler(file_handler)
+
+# Log that the Flask application is starting
+app.logger.info('Starting the Flask Stock Portfolio App...')
+
 app.secret_key = "b'7Hq\xcbB\x9d\x1d\x0b\x16\xa8\xc2y\x93\xca`\xaf#\xba\xc9d\x9f)\x91po\xa9i\x87t-\xc1\xe9'"
 
 
