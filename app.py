@@ -66,6 +66,7 @@ def add_stock():
             session['stock_symbol'] = stock_data.stock_symbol
             session['number_of_shares'] = stock_data.number_of_shares
             session['purchase_price'] = stock_data.purchase_price
+            return redirect(url_for('list_stocks'))
 
         except ValidationError as e:
             print(e)
