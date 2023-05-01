@@ -32,8 +32,8 @@ def about():
 
 
 @app.route("/stocks/")
-def stocks():
-    return "<h2>Stock List ...</h2>"
+def list_stocks():
+    return render_template('stocks.html')
 
 
 @app.route("/hello/<message>")
@@ -66,6 +66,7 @@ def add_stock():
             session['stock_symbol'] = stock_data.stock_symbol
             session['number_of_shares'] = stock_data.number_of_shares
             session['purchase_price'] = stock_data.purchase_price
+
         except ValidationError as e:
             print(e)
 
